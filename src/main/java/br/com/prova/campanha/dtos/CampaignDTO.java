@@ -2,7 +2,7 @@ package br.com.prova.campanha.dtos;
 
 import java.util.Date;
 
-public class CampanhaDTO {
+public class CampaignDTO {
 
 	private Integer campanhaId;
 	

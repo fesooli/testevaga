@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ApiModel(value = "OpApiResponse", description = "Representa a resposta de um serviço")
-public class CampanhaApiResponse<T> {
+public class CampaignApiResponse<T> {
 
 	@ApiModelProperty(value = "Status do serviço: OK ou ERROR", required = true)
     private ApiStatusEnum status;
