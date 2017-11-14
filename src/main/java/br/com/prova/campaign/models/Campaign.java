@@ -1,4 +1,4 @@
-package br.com.prova.campanha.models;
+package br.com.prova.campaign.models;
 
 import java.io.Serializable;
 import java.util.Date;

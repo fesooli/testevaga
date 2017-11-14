@@ -1,4 +1,4 @@
-package br.com.prova.campanha.response;
+package br.com.prova.campaign.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

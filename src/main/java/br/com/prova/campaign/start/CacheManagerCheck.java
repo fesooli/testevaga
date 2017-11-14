@@ -1,4 +1,4 @@
-package br.com.prova.campanha.start;
+package br.com.prova.campaign.start;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

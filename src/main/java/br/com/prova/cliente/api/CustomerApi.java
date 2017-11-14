@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.prova.api.CampaignApi;
-import br.com.prova.campanha.dtos.CampaignDTO;
-import br.com.prova.campanha.response.CampaignApiResponse;
-import br.com.prova.campanha.response.CampaignApiResponse.ApiStatusEnum;
+import br.com.prova.campaign.dtos.CampaignDTO;
+import br.com.prova.campaign.response.CampaignApiResponse;
+import br.com.prova.campaign.response.CampaignApiResponse.ApiStatusEnum;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;

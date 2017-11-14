@@ -1,4 +1,4 @@
-package br.com.prova.campanha.dtos;
+package br.com.prova.campaign.dtos;
 
 import java.util.Date;
 

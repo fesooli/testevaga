@@ -1,4 +1,4 @@
-package br.com.prova.campanha.start;
+package br.com.prova.campaign.start;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

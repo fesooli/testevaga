@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.prova.campanha.dtos.CampaignDTO;
-import br.com.prova.campanha.response.CampaignApiResponse;
-import br.com.prova.campanha.response.CampaignApiResponse.ApiStatusEnum;
+import br.com.prova.campaign.dtos.CampaignDTO;
+import br.com.prova.campaign.response.CampaignApiResponse;
+import br.com.prova.campaign.response.CampaignApiResponse.ApiStatusEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -37,8 +37,8 @@ public class CampaignApi {
             @ApiResponse(code = HttpServletResponse.SC_ACCEPTED, message = "Campanha cadastrada com sucesso."),
             @ApiResponse(code = HttpServletResponse.SC_NOT_FOUND, message = "Campanha não cadastrada.") })
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    HttpEntity<CampaignApiResponse> campanha(@RequestBody String teste) {
-
+    HttpEntity<CampaignApiResponse> insertCampaign(@RequestBody CampaignDTO campaignDto) {
+		
         return null;
     }
 
@@ -51,7 +51,7 @@ public class CampaignApi {
     @ApiResponses({ @ApiResponse(code = HttpServletResponse.SC_OK, message = "OK!"),
             @ApiResponse(code = HttpServletResponse.SC_BAD_REQUEST, message = "Dados inválidos!") })
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    HttpEntity<CampaignApiResponse<List<CampaignDTO>>> campanha() {
+    HttpEntity<CampaignApiResponse<List<CampaignDTO>>> getCampaign() {
 
     	CampaignApiResponse<List<CampaignDTO>> response = new CampaignApiResponse<>();
         response.setStatus(ApiStatusEnum.OK);
@@ -68,7 +68,7 @@ public class CampaignApi {
             @ApiResponse(code = HttpServletResponse.SC_ACCEPTED, message = "Campanha atualizada com sucesso."),
             @ApiResponse(code = HttpServletResponse.SC_NOT_FOUND, message = "Campanha não atualizada.") })
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    HttpEntity<CampaignApiResponse> campanha(@RequestBody boolean teste) {
+    HttpEntity<CampaignApiResponse> updateCampaign(@RequestBody boolean teste) {
 
         return null;
     }
@@ -78,7 +78,7 @@ public class CampaignApi {
             @ApiResponse(code = HttpServletResponse.SC_ACCEPTED, message = "Campanha excluida com sucesso."),
             @ApiResponse(code = HttpServletResponse.SC_NOT_FOUND, message = "Campanha não excluida.") })
 	@RequestMapping(method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    HttpEntity<CampaignApiResponse> campanha(@RequestBody Integer campanhaId) {
+    HttpEntity<CampaignApiResponse> deleteCampaign(@RequestBody Integer campanhaId) {
 
         return null;
     }
