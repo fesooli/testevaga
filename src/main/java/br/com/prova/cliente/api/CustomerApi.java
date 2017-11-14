@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-public class ClienteApi {
+public class CustomerApi {
 
-	private static final Log LOGGER = LogFactory.getLog(ClienteApi.class);
+	private static final Log LOGGER = LogFactory.getLog(CustomerApi.class);
 
 	@RequestMapping(value = "/campanha", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     HttpEntity<CampanhaApiResponse> campanha(@RequestBody String teste) {
