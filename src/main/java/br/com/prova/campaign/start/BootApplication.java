@@ -47,8 +47,8 @@ public class BootApplication {
     public Docket newsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
         		.select()                                  
-                .apis(RequestHandlerSelectors.basePackage("br.com.prova.api"))              
-                .paths(PathSelectors.regex("/campaign.*"))                          
+                .apis(RequestHandlerSelectors.basePackage("br.com.prova"))              
+                .paths(PathSelectors.regex(PATH_V1))                          
                 .build()
                 .apiInfo(apiInfo());
     }

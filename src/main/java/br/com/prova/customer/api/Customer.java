@@ -2,7 +2,6 @@ package br.com.prova.customer.api;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,13 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import br.com.prova.campaign.models.Campaign;
 
 @Entity
 @Table(name = "\"customer\"")
@@ -41,7 +37,7 @@ public class Customer implements Serializable {
 	private Date bornDate;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-    @JoinColumn(name = "\"club_id_fk\"", nullable = true)
+    @JoinColumn(name = "\"club_club_id\"", nullable = true)
 	private Club club;
 	
 	public Long getCustomerId() {

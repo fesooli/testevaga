@@ -19,7 +19,7 @@ public class CampaignDTO {
 
 	private Date campaignEndDate;
 	
-	private Integer clubId;
+	private Long clubId;
 
 	public String getCampaignName() {
 		return campaignName;
@@ -29,11 +29,11 @@ public class CampaignDTO {
 		this.campaignName = campaignName;
 	}
 
-	public Integer getClubId() {
+	public Long getClubId() {
 		return clubId;
 	}
 
-	public void setClubId(Integer clubId) {
+	public void setClubId(Long clubId) {
 		this.clubId = clubId;
 	}
 

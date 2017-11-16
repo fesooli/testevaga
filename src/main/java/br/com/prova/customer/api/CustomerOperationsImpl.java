@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//@Service
-public class CustomerRepositoryImpl {}/*implements CustomerOperations{
+@Service
+public class CustomerOperationsImpl implements CustomerOperations{
 
-	//@Autowired
+	@Autowired
 	private CustomerRepository customerRepository;
 
 	@Override
-	public Customer createCustomer(Customer customer) {
+	public Customer createCustomer(Customer customer) {		
 		return customerRepository.save(customer);
 	}
 
@@ -36,5 +36,9 @@ public class CustomerRepositoryImpl {}/*implements CustomerOperations{
 		return customerRepository.findOne(customer.getCustomerId());
 	}
 
+	@Override
+	public Customer findCustomerByEmail(String email) {
+		return customerRepository.findCustomerByEmail(email);
+	}
+
 }
-*/

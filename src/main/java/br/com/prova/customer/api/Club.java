@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -33,7 +34,8 @@ public class Club implements Serializable {
 	private String clubName;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-    @JoinColumn(name = "\"campaign_campaign_id\"", nullable = true)
+	@JoinTable(name = "club_campaigns", joinColumns = @JoinColumn(name = "club_club_id", referencedColumnName = "club_id"), 
+    inverseJoinColumns = @JoinColumn(name = "campaign_campaign_id", referencedColumnName = "campaign_id"))
 	private List<Campaign> campaigns;
 
 	public Long getClubId() {

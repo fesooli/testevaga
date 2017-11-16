@@ -1,5 +1,6 @@
 package br.com.prova.api;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,8 @@ import br.com.prova.campaign.models.Campaign;
 import br.com.prova.campaign.response.CampaignApiResponse;
 import br.com.prova.campaign.response.CampaignApiResponse.ApiStatusEnum;
 import br.com.prova.campaign.services.CampaignOperations;
+import br.com.prova.club.ClubOperations;
+import br.com.prova.customer.api.Club;
 import br.com.prova.util.TestApiErrorEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,13 +37,16 @@ import io.swagger.annotations.ApiResponses;
 
 @Api(value = "Campaign", produces = "application/json", description = "API para realizar operações de campanhas")
 @RestController
-@RequestMapping("/campaign")
+@RequestMapping("/v1/campaign")
 public class CampaignApi {
 	
 	private static final Log LOGGER = LogFactory.getLog(CampaignApi.class);
 	
 	@Autowired
 	private CampaignOperations campaignOperations;
+	
+	@Autowired
+	private ClubOperations clubOperations;
 
 	@ApiOperation(value = "Cadastrar Campanha", notes = "Cadastra uma campanha")
     @ApiResponses({
@@ -49,8 +55,17 @@ public class CampaignApi {
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     HttpEntity<CampaignApiResponse<CampaignDTO>> insertCampaign(@RequestBody CampaignDTO campaignDto) {
 		LOGGER.info(campaignDto.toString());
-		Campaign campaign = campaignOperations.createCampaign(parseCampaignDto(campaignDto));
-		campaignDto = parseCampaign(campaign);
+		Campaign campaign = parseCampaignDto(campaignDto);
+		if(campaign == null){
+			CampaignApiResponse<CampaignDTO> response = new CampaignApiResponse<>();
+	        response.setStatus(ApiStatusEnum.ERROR);
+	        response.setErrorCode("404");
+	        response.setErrorDescription("Club informado não encontrado.");
+	        response.setBody(null);
+	        return new ResponseEntity<CampaignApiResponse<CampaignDTO>>(response, HttpStatus.NOT_FOUND);
+		}
+		campaign = campaignOperations.createCampaign(campaign);
+		campaignDto = parseCampaign(campaign);		
 		CampaignApiResponse<CampaignDTO> response = new CampaignApiResponse<>();
         response.setStatus(ApiStatusEnum.OK);
         response.setBody(campaignDto);
@@ -105,7 +120,16 @@ public class CampaignApi {
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     HttpEntity<CampaignApiResponse<List<Campaign>>> updateCampaign(@RequestBody CampaignDTO campaignDto) {
     	LOGGER.info(campaignDto.toString());
-		List<Campaign> campaigns = campaignOperations.updateCampaign(parseCampaignDto(campaignDto));
+    	Campaign campaign = parseCampaignDto(campaignDto);
+		if(campaign == null){
+			CampaignApiResponse<List<Campaign>> response = new CampaignApiResponse<>();
+	        response.setStatus(ApiStatusEnum.ERROR);
+	        response.setErrorCode("404");
+	        response.setErrorDescription("Club informado não encontrado.");
+	        response.setBody(null);
+	        return new ResponseEntity<CampaignApiResponse<List<Campaign>>>(response, HttpStatus.NOT_FOUND);
+		}
+		List<Campaign> campaigns = campaignOperations.updateCampaign(campaign);
 		CampaignApiResponse<List<Campaign>> response = new CampaignApiResponse<>();
         response.setStatus(ApiStatusEnum.OK);
         response.setBody(campaigns);
@@ -131,6 +155,12 @@ public class CampaignApi {
     	campaign.setCampaignName(campaignDTO.getCampaignName());
     	campaign.setCampaignStartDate(campaignDTO.getCampaignStartDate());
     	campaign.setCampaignEndDate(campaignDTO.getCampaignEndDate());
+    	Club club = clubOperations.findClubById(campaignDTO.getClubId());
+    	if(club == null){
+    		return null;
+    	}
+    	campaign.setClubs(new ArrayList<>());
+    	campaign.getClubs().add(club);
     	campaign.setCreatedDate(new Date());
     	return campaign;
     }

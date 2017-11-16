@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -48,7 +49,8 @@ public class Campaign implements Serializable {
 	private Date createdDate;
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-    @JoinColumn(name = "\"club_club_id\"", nullable = true)
+    @JoinTable(name = "club_campaigns", joinColumns = @JoinColumn(name = "campaign_campaign_id", referencedColumnName = "campaign_id"),
+    inverseJoinColumns = @JoinColumn(name = "club_club_id", referencedColumnName = "club_id"))
 	private List<Club> clubs;
 
 	public Long getCampaignId() {

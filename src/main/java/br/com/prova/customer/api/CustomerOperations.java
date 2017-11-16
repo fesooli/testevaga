@@ -10,6 +10,8 @@ public interface CustomerOperations {
 	
 	Customer updateCustomer(Customer customer);
 	
+	Customer findCustomerByEmail(String email);
+	
 	void deleteCustomer(Long customerId);
 	
 	Customer searchCustomer(Customer customer);
