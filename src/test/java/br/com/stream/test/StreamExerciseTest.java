@@ -10,7 +10,7 @@ import br.com.stream.VowelException;
 public class StreamExerciseTest {
 
 	@Test(expected = ConsonantException.class)
-	public void teste_quando_nao_contem_consoante(){
+	public void notContainsConsonant(){
 		new StreamExercise("AaeEUiOiU");
 	}
 	
@@ -31,7 +31,7 @@ public class StreamExerciseTest {
 	
 	@Test
 	public void findVowel(){
-		String input = "aAbBABacfe";
+		String input = " aAbBABacafe";
 		StreamExercise stream = new StreamExercise(input);
 		for (int i = 0; i < input.length(); i++){
 			if (i == (input.length() - 1)){

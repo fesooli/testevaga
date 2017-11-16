@@ -21,9 +21,10 @@ public class StreamExercise implements Stream{
 				.findFirst().orElseThrow(ConsonantException::new);
 		int consonantIndex = chars.indexOf(consonant);
 		String vowel = chars.subList(consonantIndex, chars.size()).stream()
-				.filter(filtraVogalUnica(chars))
+				.filter(filterUniqueVowel(chars))
 				.findFirst().orElseThrow(VowelException::new);
 		this.vowelIndex = chars.indexOf(vowel);
+		System.out.println("INPUT: " + input + ", VOGAL: " + vowel);
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class StreamExercise implements Stream{
 		return this.index <= this.input.length() && this.vowelIndex == -1 || this.index <= this.vowelIndex;
 	}
 
-	private Predicate<? super String> filtraVogalUnica(List<String> chars) {
+	private Predicate<? super String> filterUniqueVowel(List<String> chars) {
 		return s -> s.matches(VOGAL_MATCHER) && chars.stream().filter(v -> v.equals(s)).count() == 1;
 	}
 }
