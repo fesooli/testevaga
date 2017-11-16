@@ -1,12 +1,14 @@
-package br.com.prova.cliente.api;
+package br.com.prova.customer.api;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class CustomerRepositoryImpl implements CustomerOperations{
+//@Service
+public class CustomerRepositoryImpl {}/*implements CustomerOperations{
 
-	@Autowired
+	//@Autowired
 	private CustomerRepository customerRepository;
 
 	@Override
@@ -35,3 +37,4 @@ public class CustomerRepositoryImpl implements CustomerOperations{
 	}
 
 }
+*/

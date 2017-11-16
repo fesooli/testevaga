@@ -2,38 +2,69 @@ package br.com.prova.campaign.dtos;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class CampaignDTO {
 
-	private Integer campanhaId;
+	private Long campaignId;
 	
-	private String nomeCampanha;
+	private String campaignName;
+
+	private Date campaignStartDate;
+
+	private Date campaignEndDate;
 	
-	private Date dataVigencia;
-	
-	private Integer timeId;
+	private Integer clubId;
 
-	public Integer getCampanhaId() {
-		return campanhaId;
+	public String getCampaignName() {
+		return campaignName;
 	}
 
-	public void setCampanhaId(Integer campanhaId) {
-		this.campanhaId = campanhaId;
+	public void setCampaignName(String campaignName) {
+		this.campaignName = campaignName;
 	}
 
-	public Date getDataVigencia() {
-		return dataVigencia;
+	public Integer getClubId() {
+		return clubId;
 	}
 
-	public void setDataVigencia(Date dataVigencia) {
-		this.dataVigencia = dataVigencia;
+	public void setClubId(Integer clubId) {
+		this.clubId = clubId;
 	}
 
-	public Integer getTimeId() {
-		return timeId;
+	public Long getCampaignId() {
+		return campaignId;
 	}
 
-	public void setTimeId(Integer timeId) {
-		this.timeId = timeId;
+	public void setCampaignId(Long campaignId) {
+		this.campaignId = campaignId;
 	}
-	
+
+	public Date getCampaignStartDate() {
+		return campaignStartDate;
+	}
+
+	public void setCampaignStartDate(Date campaignStartDate) {
+		this.campaignStartDate = campaignStartDate;
+	}
+
+	public Date getCampaignEndDate() {
+		return campaignEndDate;
+	}
+
+	public void setCampaignEndDate(Date campaignEndDate) {
+		this.campaignEndDate = campaignEndDate;
+	}
+
+	@Override
+	public String toString() {
+		return "CampaignDTO [campaignId=" + campaignId + ", campaignName=" + campaignName + ", campaignStartDate="
+				+ campaignStartDate + ", campaignEndDate=" + campaignEndDate + ", clubId=" + clubId + "]";
+	}
+		
 }

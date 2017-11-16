@@ -1,4 +1,4 @@
-package br.com.prova.cliente.api;
+package br.com.prova.customer.api;
 
 import java.util.List;
 

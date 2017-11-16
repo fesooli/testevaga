@@ -2,11 +2,12 @@ package br.com.prova.campaign.start;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -23,11 +24,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *
  */
 @SpringBootApplication
-@EnableJpaAuditing(modifyOnCreate = true)
+@EnableJpaRepositories("br.com.prova.*")
 @EnableSwagger2
 @EnableCaching
 @Configuration
-@ComponentScan(basePackages = "br.com.prova")
+@ComponentScan("br.com.prova.*")
+@EntityScan("br.com.prova.*") 
 public class BootApplication {
 	private static final String API_INFO_LICENSE = "prova-netbase";
     private static final String API_INFO_CONTACT = "Fellipe Oliveira - fellipe_so@hotmail.com";
